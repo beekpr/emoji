@@ -20,6 +20,7 @@ PY2 = sys.version_info[0] is 2
 
 _EMOJI_REGEXP = None
 _EMOJI_REGEXP_NOSPACE = None
+_EMOJI_SHORTCODE_REGEXP = None
 _SHORTCUT_REGEXP = None
 
 USE_ALIASES = False
@@ -43,8 +44,6 @@ def emojize(string, use_aliases=USE_ALIASES, no_space=NO_SPACE):
         Python is fun 👍
     """
 
-    pattern = re.compile(u'(:[a-zA-Z0-9\+\-_&.ô’Åéãíç]+:)')
-
     def replace(match):
         if use_aliases:
             val = unicode_codes.EMOJI_ALIAS_UNICODE.get(match.group(1), None)
@@ -56,9 +55,9 @@ def emojize(string, use_aliases=USE_ALIASES, no_space=NO_SPACE):
             return val
         return match.group(1)
 
-    return pattern.sub(replace, string)
+    return get_emoji_shortcode_regex().sub(replace, string)
 
-def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS):
+def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS, max_length=None):
 
     """Replace unicode emoji in a string with emoji shortcodes. Useful for storage.
 
@@ -86,8 +85,21 @@ def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS):
 
     # Decode shortcuts
     string = get_emoji_regexp(no_space).sub(replace, string)
+    
+    if max_length:
+        safe_length = _get_safe_length(string, max_length)
+        string = string[0:safe_length]
 
     return string
+
+def _get_safe_length(text, max_length):
+        previous = 0
+        for m in get_emoji_shortcode_regex().finditer(text):
+            if m.start() + len(m.group()) > max_length:
+                return m.start() if "emoji_modifier_fitzpatrick" not in m.group() else previous
+            previous = m.start()
+        return max_length
+
 
 def get_emoji_regexp(no_space=NO_SPACE):
 
@@ -115,6 +127,14 @@ def get_emoji_regexp(no_space=NO_SPACE):
             _EMOJI_REGEXP = regexp
     return _EMOJI_REGEXP_NOSPACE if no_space else _EMOJI_REGEXP
 
+
+def get_emoji_shortcode_regex():
+    
+    global _EMOJI_SHORTCODE_REGEXP
+    if _EMOJI_SHORTCODE_REGEXP is None:
+        pattern = u'(:[a-zA-Z0-9\+\-_&.ô’Åéãíç]+:)'
+        _EMOJI_SHORTCODE_REGEXP = re.compile(pattern)
+    return _EMOJI_SHORTCODE_REGEXP
 
 
 def get_shortcut_regexp():
