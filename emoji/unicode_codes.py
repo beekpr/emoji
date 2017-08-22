@@ -1214,7 +1214,7 @@ EMOJI_UNICODE = {
     u':umbrella_on_ground:': u'\U000026F1',
     u':umbrella_with_rain_drops:': u'\U00002614',
     u':unamused_face:': u'\U0001F612',
-    u':unicorn_face:': u'\U0001F984',
+    u':unicorn:': u'\U0001F984',
     u':up-pointing_red_triangle:': u'\U0001F53A',
     u':up-pointing_small_red_triangle:': u'\U0001F53C',
     u':up_down_arrow:': u'\U00002195',
