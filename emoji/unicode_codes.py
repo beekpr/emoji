@@ -10,16 +10,6 @@ __all__ = ['EMOJI_UNICODE', 'UNICODE_EMOJI', 'EMOJI_ALIAS_UNICODE', 'UNICODE_EMO
 
 
 EMOJI_UNICODE = {
-
-    #Manually added
-    #u':flag_for_England:': u'\U0001F3F4 \U000E0067 \U000E0062 \U000E0065 \U000E006E \U000E0067 \U000E007F',
-    u':latin_small_g:': u'\U000E0067',
-    u':latin_small_b:': u'\U000E0062',
-    u':latin_small_e:': u'\U000E0065',
-    u':latin_small_n:': u'\U000E006E',
-    u':cancel_tag:': u'\U000E007F',
-
-
     u':admission_tickets:': u'\U0001F39F',
     u':aerial_tramway:': u'\U0001F6A1',
     u':airplane:': u'\U00002708',
@@ -149,6 +139,7 @@ EMOJI_UNICODE = {
     u':camera:': u'\U0001F4F7',
     u':camera_with_flash:': u'\U0001F4F8',
     u':camping:': u'\U0001F3D5',
+    u':cancel_tag:': u'\U000E007F',
     u':cancer:': u'\U0000264B',
     u':candle:': u'\U0001F56F',
     u':candy:': u'\U0001F36C',
@@ -1170,6 +1161,15 @@ EMOJI_UNICODE = {
     u':t-shirt:': u'\U0001F455',
     u':table_tennis_paddle_and_ball:': u'\U0001F3D3',
     u':taco:': u'\U0001F32E',
+    u':tag_latin_small_b:': u'\U000E0062',
+    u':tag_latin_small_c:': u'\U000E0063',
+    u':tag_latin_small_e:': u'\U000E0065',
+    u':tag_latin_small_g:': u'\U000E0067',
+    u':tag_latin_small_l:': u'\U000E006C',
+    u':tag_latin_small_n:': u'\U000E006E',
+    u':tag_latin_small_s:': u'\U000E0073',
+    u':tag_latin_small_t:': u'\U000E0074',
+    u':tag_latin_small_w:': u'\U000E0077',
     u':tanabata_tree:': u'\U0001F38B',
     u':tangerine:': u'\U0001F34A',
     u':taurus:': u'\U00002649',
@@ -1505,10 +1505,6 @@ EMOJI_UNICODE = {
 }
 
 EMOJI_ALIAS_UNICODE = dict(EMOJI_UNICODE.items(), **{
-    
-    #Manually added
-    #u':flag_for_England:': u'\U0001F3F4',
-
     u':admission_tickets:': u'\U0001F39F',
     u':aerial_tramway:': u'\U0001F6A1',
     u':airplane:': u'\U00002708',
