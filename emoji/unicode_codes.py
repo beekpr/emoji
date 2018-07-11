@@ -10,6 +10,16 @@ __all__ = ['EMOJI_UNICODE', 'UNICODE_EMOJI', 'EMOJI_ALIAS_UNICODE', 'UNICODE_EMO
 
 
 EMOJI_UNICODE = {
+
+    #Manually added
+    #u':flag_for_England:': u'\U0001F3F4 \U000E0067 \U000E0062 \U000E0065 \U000E006E \U000E0067 \U000E007F',
+    u':latin_small_g:': u'\U000E0067',
+    u':latin_small_b:': u'\U000E0062',
+    u':latin_small_e:': u'\U000E0065',
+    u':latin_small_n:': u'\U000E006E',
+    u':cancel_tag:': u'\U000E007F',
+
+
     u':admission_tickets:': u'\U0001F39F',
     u':aerial_tramway:': u'\U0001F6A1',
     u':airplane:': u'\U00002708',
@@ -1495,6 +1505,10 @@ EMOJI_UNICODE = {
 }
 
 EMOJI_ALIAS_UNICODE = dict(EMOJI_UNICODE.items(), **{
+    
+    #Manually added
+    #u':flag_for_England:': u'\U0001F3F4',
+
     u':admission_tickets:': u'\U0001F39F',
     u':aerial_tramway:': u'\U0001F6A1',
     u':airplane:': u'\U00002708',
