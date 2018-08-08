@@ -57,6 +57,7 @@ def emojize(string, use_aliases=USE_ALIASES, no_space=NO_SPACE):
 
     return get_emoji_shortcode_regex().sub(replace, string)
 
+
 def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS, max_length=None):
 
     """Replace unicode emoji in a string with emoji shortcodes. Useful for storage.
@@ -75,11 +76,10 @@ def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS, max_length=
     """
 
     if use_shortcuts:
-        def replace_shortcuts(match):
-            return shortcuts.SHORTCUTS.get(match.group(1), match.group(1))
-        string = get_shortcut_regexp().sub(replace_shortcuts, u' ' + string)[1:]
+        string = replace_shortcuts(string)
 
     UNICODE_EMOJI = unicode_codes.UNICODE_EMOJI_NO_SPACE if no_space else unicode_codes.UNICODE_EMOJI
+
     def replace(match):
         return UNICODE_EMOJI.get(match.group(0), match.group(0))
 
@@ -91,6 +91,13 @@ def demojize(string, no_space=NO_SPACE, use_shortcuts=USE_SHORTCUTS, max_length=
         string = string[0:safe_length]
 
     return string
+
+
+def replace_shortcuts(string):
+    def replace(match):
+        return shortcuts.SHORTCUTS.get(match.group(1), match.group(1))
+    return get_shortcut_regexp().sub(replace, u' ' + string)[1:]
+
 
 def _get_safe_length(text, max_length):
         previous = 0
