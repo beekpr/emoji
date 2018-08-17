@@ -155,6 +155,6 @@ def get_shortcut_regexp():
     if _SHORTCUT_REGEXP is None:
         values = shortcuts.SHORTCUTS.keys()
         values = sorted(values, key=len, reverse=True)
-        pattern = u'(?<=[\ ])(' + u'|'.join(re.escape(u) for u in values) + u')((?=(\ |\)|\.))|$)'
+        pattern = u'(?<=\s)(' + u'|'.join(re.escape(u) for u in values) + u')((?=(\s|\)|\.))|$)'
         _SHORTCUT_REGEXP = re.compile(pattern)
     return _SHORTCUT_REGEXP
