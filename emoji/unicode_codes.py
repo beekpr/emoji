@@ -1656,7 +1656,7 @@ EMOJI_ALIAS_UNICODE = dict(EMOJI_UNICODE.items(), **{
     u':chart_with_upwards_trend:': u'\U0001F4C8',
     u':chart:': u'\U0001F4B9',
     u':mega:': u'\U0001F4E3',
-    u':cheese_wedge:': u'\U0001F9C0',
+    u':cheese:': u'\U0001F9C0',
     u':checkered_flag:': u'\U0001F3C1',
     u':cherries:': u'\U0001F352',
     u':cherry_blossom:': u'\U0001F338',
